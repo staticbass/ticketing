@@ -12,8 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: Build the Docker image
-        run: cd auth/ && docker build -t interslate/auth .
+        run: cd auth && docker build -t interslate/auth .
       
       - name: Login to Docker hub
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
