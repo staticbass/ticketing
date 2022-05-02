@@ -12,17 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
       - name: Build the Docker image
-      - run: cd auth/ && docker build -t interslate/auth .
+        run: cd auth/ && docker build -t interslate/auth .
       
-      - uses: actions/checkout@v3
       - name: Login to Docker hub
-      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env: 
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           
-      - uses: actions/checkout@v3
       - name: Push the Docker image
-      - run: docker push interslate/auth
+        run: docker push interslate/auth
